@@ -17,8 +17,7 @@
     - fir login 8f68d31a204da27bfcc3747fa11dcbb6 #fir账号的Token
     - fir me #打印身份信息,验证是否登录成功
     - find ./ -name app-debug.apk
-    - locate app-debug.apk
-    - fir p appild/outputs/apk/app-debug.apk #自动发布应用至fir内测平台
+    - fir p ./app/build/outputs/apk/app-debug.apk #自动发布应用至fir内测平台
 
     before_install:
     - chmod +x gradlew
