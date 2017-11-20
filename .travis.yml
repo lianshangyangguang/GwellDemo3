@@ -1,4 +1,4 @@
- language: android
+    language: android
     sudo: false
     git:
       depth: 3 #将git depth设置相对小的值,加快构建速度
