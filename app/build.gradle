@@ -19,6 +19,24 @@ android {
         }
     }
 
+//    signingConfigs {
+//        releaseConfig {
+//            storeFile file("../../test.jks")//指定密钥文件的路径
+//            storePassword project.hasProperty("123456") ? KEYSTORE_PASS : System.getenv("KEYSTORE_PASS")//指定密钥参数
+//            keyAlias project.hasProperty("test") ? ALIAS_NAME : System.getenv("ALIAS_NAME")
+//            keyPassword project.hasProperty("123456") ? ALIAS_PASS : System.getenv("ALIAS_PASS")
+//        }
+//    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.releaseConfig//注意这一行
+//        }
+//    }
+
+
+
     signingConfigs {
         release {
             // default keystore file, PLZ config file path in local.properties
@@ -40,15 +58,14 @@ android {
             }
         }
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.releaseConfig//注意这一行
-            zipAlignEnabled true
-        }
-    }
 
+    //    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.releaseConfig//注意这一行
+//        }
+//    }
 
 //    fir{
 //        //必填 上传 fir.im apk 字段，否则无法上传 APP 到 fir.im
@@ -58,22 +75,22 @@ android {
 //        changeLog '日志测试'
 //    }
 
-//    buildTypes {
-//        debug {
-//            minifyEnabled false
-//            //对齐优化设置为true，否则找不到该task (默认不写也是true)
-//            zipAlignEnabled true
-//        }
-//        release {
-//            minifyEnabled false
-//            zipAlignEnabled true
-//            signingConfig signingConfigs.release
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            //对齐优化设置为true，否则找不到该task (默认不写也是true)
-//            zipAlignEnabled true
-//        }
-//
-//    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            //对齐优化设置为true，否则找不到该task (默认不写也是true)
+            zipAlignEnabled true
+        }
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //对齐优化设置为true，否则找不到该task (默认不写也是true)
+            zipAlignEnabled true
+        }
+
+    }
 
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
