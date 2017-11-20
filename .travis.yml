@@ -13,7 +13,7 @@
       - extra-android-support
 
     script:
-    - "./gradlew assembleRelease"
+    - "./gradlew assembleDebug"
     before_install:
     - chmod +x gradlew
     - gem install fir-cli #安装fir命令行客户端
