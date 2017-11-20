@@ -22,9 +22,9 @@ android {
     signingConfigs {
         releaseConfig {
             storeFile file("../test.jks")//指定密钥文件的路径
-            storePassword project.hasProperty("123456") ? KEYSTORE_PASS : System.getenv("KEYSTORE_PASS")//指定密钥参数
-            keyAlias project.hasProperty("test") ? ALIAS_NAME : System.getenv("ALIAS_NAME")
-            keyPassword project.hasProperty("123456") ? ALIAS_PASS : System.getenv("ALIAS_PASS")
+            storePassword project.hasProperty("123456") ? KEYSTORE_PASS : System.getenv("123456")//指定密钥参数
+            keyAlias project.hasProperty("test") ? ALIAS_NAME : System.getenv("test")
+            keyPassword project.hasProperty("123456") ? ALIAS_PASS : System.getenv("123456")
         }
     }
     buildTypes {
