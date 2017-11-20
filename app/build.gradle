@@ -20,11 +20,24 @@ android {
     }
 
     signingConfigs {
-        releaseConfig {
-            storeFile file("../test.jks")//指定密钥文件的路径
-            storePassword project.hasProperty("123456") ? KEYSTORE_PASS : System.getenv("123456")//指定密钥参数
-            keyAlias project.hasProperty("test") ? ALIAS_NAME : System.getenv("test")
-            keyPassword project.hasProperty("123456") ? ALIAS_PASS : System.getenv("123456")
+        release {
+            // default keystore file, PLZ config file path in local.properties
+            Properties properties = new Properties()
+            //加载本地local.properties文件
+            if (rootProject.file('local.properties').exists()) {
+                properties.load(rootProject.file("local.properties").newDataInputStream())
+                if(properties.get("storeFile")!=null){
+                    storeFile file(properties.get("storeFile"))
+                    storePassword properties.get("storePassword")
+                    keyAlias properties.get("keyAlias")
+                    keyPassword properties.get("keyPassword")
+                }
+            }else if(System.getenv("FLOW_CERTIFICATE_FILE")!=null){
+                storeFile file(System.getenv("FLOW_CERTIFICATE_FILE"))
+                storePassword System.getenv("FLOW_KEYSTORE_PASS")
+                keyAlias System.getenv("FLOW_ALIAS_NAME")
+                keyPassword System.getenv("FLOW_ALIAS_PASS")
+            }
         }
     }
     buildTypes {
