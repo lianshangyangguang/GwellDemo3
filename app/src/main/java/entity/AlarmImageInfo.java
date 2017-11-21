@@ -11,7 +11,7 @@ public class AlarmImageInfo {
 
     public AlarmImageInfo() {
     }
-
+           
     public AlarmImageInfo(int srcID, String path, int errorCode) {
         SrcID = srcID;
         Path = path;
